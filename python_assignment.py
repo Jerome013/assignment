@@ -26,14 +26,12 @@ try:
     orderSalesItemsCustomer1.reset_index(drop = True, inplace = True)
 
     orderSalesItemsCustomer1['quantity'] = orderSalesItemsCustomer1['quantity'].astype('int')
+    orderSalesItemsCustomer1 = orderSalesItemsCustomer1[orderSalesItemsCustomer1['quantity'] > 0]
     orderSalesItemsCustomer2 = orderSalesItemsCustomer1[orderSalesItemsCustomer1['age'].between(18, 35)]
     SortValorderSalesItemsCustomer1 = orderSalesItemsCustomer2.sort_values(by='customer_id', ascending=True)
+
+
     SortValorderSalesItemsCustomer1.to_csv('csvdata.csv', sep=';', header=True, index=False)
-    # cursor.execute(sqlite_select_Query)
-    # record = cursor.fetchall()
-    # sqliteConnection.commit()
-    # print(record)
-    # cursor.close()
 
 except sqlite3.Error as error:
     print("Error while connecting to sqlite", error)
