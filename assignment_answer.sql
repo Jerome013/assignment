@@ -7,10 +7,10 @@ With orderSale as (SELECT a.*, b.*, c.*,d.*
 								)
 								
 SELECT
-		customer_id AS customer,
-		age,
-		item_name AS item,
-		sum(quantity)
+		customer_id AS Customer,
+		age AS Age,
+		item_name AS Item,
+		sum(quantity) AS Quntity
 FROM orderSale
 WHERE quantity IS NOT NULL
 	GROUP BY

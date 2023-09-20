@@ -29,7 +29,12 @@ try:
     orderSalesItemsCustomer1 = orderSalesItemsCustomer1[orderSalesItemsCustomer1['quantity'] > 0]
     orderSalesItemsCustomer2 = orderSalesItemsCustomer1[orderSalesItemsCustomer1['age'].between(18, 35)]
     SortValorderSalesItemsCustomer1 = orderSalesItemsCustomer2.sort_values(by='customer_id', ascending=True)
-
+    colRenaming = {'customer_id':'Customer',
+                   'age':'Age',
+                   'item_name':'Item',
+                   'quantity' : 'Quantity'
+                    }
+    SortValorderSalesItemsCustomer1.rename(columns = colRenaming, inplace=True)
 
     SortValorderSalesItemsCustomer1.to_csv('csvdata.csv', sep=';', header=True, index=False)
 
